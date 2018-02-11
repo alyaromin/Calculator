@@ -192,7 +192,6 @@ public class Calculator {
 
     private BigDecimal getNumber() {
         BigDecimal number = new BigDecimal(result.pop());
-
         return number;
     }
 }

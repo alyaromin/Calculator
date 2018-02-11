@@ -31,7 +31,6 @@ public class Controller {
             } catch (CalcException e) {
                 view.update(e.getMessage());
             }
-
         }
         view.update();
     }
