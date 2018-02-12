@@ -13,7 +13,7 @@ public class Controller {
     private String result;
     private boolean isNotQuit;
 
-    public Controller(){
+    public Controller() {
         this.scanner = new Scanner(System.in);
         this.view = new View();
         this.calculator = new Calculator();
@@ -21,27 +21,28 @@ public class Controller {
         view.update(result);
     }
 
-    public void run(){
-        while (isNotQuit){
+    public void run() {
+        while (isNotQuit) {
             reset();
             getExpression();
             try {
-                result = calculator.calculate(expression);;
+                result = calculator.calculate(expression);
                 view.update(expression + " = " + result);
             } catch (CalcException e) {
-                view.update(e.getMessage());
+                view.update(expression + " = " + e.getMessage());
             }
         }
         view.update();
     }
 
-    private void getExpression(){
+    private void getExpression() {
         expression = scanner.nextLine();
-        if (expression.compareToIgnoreCase("quit") == 0){
+        if (expression.compareToIgnoreCase("quit") == 0) {
             isNotQuit = false;
         }
     }
-    private void reset(){
+
+    private void reset() {
         this.expression = "";
         this.expressionRPN = "";
         this.result = "";
