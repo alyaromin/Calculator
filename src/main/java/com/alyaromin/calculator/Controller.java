@@ -7,45 +7,37 @@ import java.util.Scanner;
 public class Controller {
     private View view;
     private Calculator calculator;
-    private Scanner scanner;
+
     private String expression;
-    private String expressionRPN;
-    private String result;
-    private boolean isNotQuit;
 
     public Controller() {
-        this.scanner = new Scanner(System.in);
         this.view = new View();
         this.calculator = new Calculator();
-        reset();
-        view.update(result);
+        view.update("");
     }
 
     public void run() {
-        while (isNotQuit) {
-            reset();
-            getExpression();
+        do {
+            readExpressionFromConsole();
             try {
-                result = calculator.calculate(expression);
+                String result = calculator.calculate(expression);
                 view.update(expression + " = " + result);
             } catch (CalcException e) {
                 view.update(expression + " = " + e.getMessage());
             }
-        }
+        } while (isQuit());
         view.update();
     }
 
-    private void getExpression() {
-        expression = scanner.nextLine();
+    private boolean isQuit() {
         if (expression.compareToIgnoreCase("quit") == 0) {
-            isNotQuit = false;
+            return false;
         }
+        return true;
     }
 
-    private void reset() {
-        this.expression = "";
-        this.expressionRPN = "";
-        this.result = "";
-        this.isNotQuit = true;
+    private void readExpressionFromConsole() {
+        Scanner scanner = new Scanner(System.in);
+        expression = scanner.nextLine();
     }
 }
