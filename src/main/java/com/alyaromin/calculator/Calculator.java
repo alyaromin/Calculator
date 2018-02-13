@@ -78,6 +78,10 @@ public class Calculator {
         StringTokenizer stringTokenizer = new StringTokenizer(expression,
                 OPERATORS + "()" + " ", true);
 
+        if (!stringTokenizer.hasMoreTokens()){
+            throw new CalcException("Введите данные");
+        }
+
         while (stringTokenizer.hasMoreTokens()) {
             String token = stringTokenizer.nextToken();
 
