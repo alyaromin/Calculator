@@ -19,8 +19,7 @@ public class View {
             final String os = System.getProperty("os.name");
 
             if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-                new ProcessBuilder("cmd", "/c", "cls").start().waitFor();
+               //TODO: clear Windows console;
             } else {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
