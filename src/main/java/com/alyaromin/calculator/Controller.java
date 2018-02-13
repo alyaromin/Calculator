@@ -25,15 +25,15 @@ public class Controller {
             } catch (CalcException e) {
                 view.update(expression + " = " + e.getMessage());
             }
-        } while (isQuit());
+        } while (!isQuit());
         view.update();
     }
 
     private boolean isQuit() {
         if (expression.compareToIgnoreCase("quit") == 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void readExpressionFromConsole() {
