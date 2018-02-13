@@ -20,6 +20,7 @@ public class View {
 
             if (os.contains("Windows")) {
                 Runtime.getRuntime().exec("cls");
+                new ProcessBuilder("cmd", "/c", "cls").start().waitFor();
             } else {
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
